@@ -7,15 +7,35 @@
 //
 
 import UIKit
-
+import GoogleMaps
+import GooglePlaces
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SWRevealViewControllerDelegate {
 
     var window: UIWindow?
 
-
+//AIzaSyB6TLGPIe_-t1-Q40NEamOB6wz2b_BgsYw
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        GMSServices.provideAPIKey("AIzaSyB6TLGPIe_-t1-Q40NEamOB6wz2b_BgsYw")
+        GMSPlacesClient.provideAPIKey("AIzaSyB6TLGPIe_-t1-Q40NEamOB6wz2b_BgsYw")
+        
+        var frontNavigationController:UINavigationController
+        let revealController = SWRevealViewController()
+        var mainRevealController = SWRevealViewController()
+        let sidebar = MenuViewController()
+        let homepage : UIViewController = HomeViewController()
+        frontNavigationController =  UINavigationController(rootViewController: homepage)
+        revealController.frontViewController = frontNavigationController
+        revealController.rearViewController = sidebar
+        revealController.rearViewRevealOverdraw = 0
+        
+        mainRevealController  = revealController
+        
+        
+        
+        self.window?.rootViewController = mainRevealController
+        self.window?.makeKeyAndVisible()
         return true
     }
 
