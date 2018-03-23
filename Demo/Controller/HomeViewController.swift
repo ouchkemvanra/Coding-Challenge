@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, GMSMapVie
         super.viewDidLoad()
         
         if self.revealViewController() != nil{
+        self.navigationItem.title = "Book a Spot"
         self.setupMenuGestureRecognizer()
         self.navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage.init(named: "menu"), style: .plain, target: self.revealViewController, action: #selector(self.revealViewController().revealToggle(_:))), animated: true)
         }
