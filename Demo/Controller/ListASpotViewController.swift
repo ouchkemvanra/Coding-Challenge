@@ -14,6 +14,7 @@ class ListASpotViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         if self.revealViewController() != nil{
+            self.navigationItem.title = "List a Spot"
             self.setupMenuGestureRecognizer()
             self.navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage.init(named: "menu"), style: .plain, target: self.revealViewController, action: #selector(self.revealViewController().revealToggle(_:))), animated: true)
         }
